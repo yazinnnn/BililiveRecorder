@@ -64,17 +64,17 @@ writeFileSync(cli_config_path, DO_NOT_EDIT_COMMENT + cli_config_code, {
 // ---------------------------------------------
 //                  WEB
 // ---------------------------------------------
-/* disabled
+
 console.log("[node] writing web config...")
 
-const web_config_path = resolve(baseDirectory, '../BililiveRecorder.Web.Schemas/Types/Config.gen.cs');
+const path_web_config = resolve(baseDirectory, '../BililiveRecorder.Web.Schemas/Types/Config.gen.cs');
 
 const web_config_code = generate_web_config(data);
 
-writeFileSync(web_config_path, DO_NOT_EDIT_COMMENT + web_config_code, {
+writeFileSync(path_web_config, DO_NOT_EDIT_COMMENT + web_config_code, {
     encoding: "utf8"
 });
-*/
+
 // ---------------------------------------------
 //                 FORMAT
 // ---------------------------------------------
@@ -90,7 +90,7 @@ let format = spawn('dotnet',
         '--include',
         './BililiveRecorder.Core/Config/V2/Config.gen.cs',
         './BililiveRecorder.Cli/Configure/ConfigInstructions.gen.cs',
-        // './BililiveRecorder.Web.Schemas/Types/Config.gen.cs'
+        './BililiveRecorder.Web.Schemas/Types/Config.gen.cs'
     ],
     {
         cwd: resolve(baseDirectory, "..")
